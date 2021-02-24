@@ -18,9 +18,17 @@ const HomePage = () => {
 		favourites: state.favourites,
 		toggleFavAction,
 	};
+
+	const Loading = () => (
+		<h3 style={{ marginTop: '30px', textAlign: 'center' }}>Loading...</h3>
+	);
+
+	if (state.episodes.length === 0) {
+		return <Loading />;
+	}
 	return (
 		<>
-			<React.Suspense fallback={<div>lo ading</div>}>
+			<React.Suspense fallback={<Loading />}>
 				<section className='episode-layout'>
 					<EpisodesList {...props} />
 				</section>
